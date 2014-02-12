@@ -1,7 +1,6 @@
 // Local files
 var apiRequest = require('./request');
 
-
 // API RESPONSE
 var http = require('http');
 var sys = require('sys');
@@ -17,5 +16,7 @@ var server = http.createServer(function(req, res) {
     apiRequest.getContent(param, res);
 });
 
-server.listen(8124, "127.0.0.1");
-console.log('Server running at http://127.0.0.1:8124/');
+var port = Number(process.env.PORT || 5000);
+server.listen(port, function() {
+	console.log('listening on '+port);
+});
