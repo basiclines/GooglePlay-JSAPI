@@ -1,0 +1,30 @@
+{
+  "author": {
+    "name": "basiclines",
+    "email": "ismael.gonzalez@meetsapp.com",
+    "url": "meetsapp.com"
+  },
+  "name": "GooglePlay-Store-API",
+  "description": "Obtaing GooglePlay Store applications metadata",
+  "keywords": [
+    "GooglePlay",
+    "android",
+    "api",
+    "scraper",
+    "metadata",
+    "google"
+  ],
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MatthewMueller/cheerio.git"
+  },
+  "main": "./index.js",
+  "engines": {
+    "node": ">= 0.6"
+  },
+  "dependencies": {
+    "util": "0.x",
+    "cheerio": "0.x"
+  }
+}
