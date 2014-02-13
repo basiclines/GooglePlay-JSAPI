@@ -16,6 +16,7 @@ var routes = {
 	search: '/search/*'
 }
 
+// API response headers
 var apiHeaders = {
 	'Content-Type': 'application/json',
 	'Access-Control-Allow-Origin': '*',

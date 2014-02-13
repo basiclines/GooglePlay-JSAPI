@@ -5,7 +5,7 @@
     "url": "meetsapp.com"
   },
   "name": "GooglePlay-Store-API",
-  "description": "Get GooglePlay Store applications metadata",
+  "description": "Provides GooglePlay Store applications metadata",
   "keywords": [
     "GooglePlay",
     "android",
