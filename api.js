@@ -15,9 +15,10 @@ module.exports = {
 
     config.lang = (typeof config.lang == "string") ? config.lang : "en_US";
 
-    var headers = "Accept-Language:"+config.lang;
+    var headerLanguage = "Accept-Language:"+config.lang;
+    var headerEncoding = "Content-Type: charset=utf-8";
     var base_path = "https://play.google.com/store/apps/details?id="
-    var command = 'curl  -H '+headers+' -sL '+base_path+config.appID;
+    var command = 'curl  -H '+headerLanguage+' -H '+headerEncoding+' -sL '+base_path+config.appID;
 
     // Use request instead of child_process
     // http://nodejs.org/docs/v0.5.2/api/http.html#http.request

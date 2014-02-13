@@ -12,7 +12,7 @@ app.use(logfmt.requestLogger());
 // Routes definitions
 var routes = {
 	root: '/',
-	app: '/app/*',
+	app: '/app/:appID',
 	search: '/search/*'
 }
 
@@ -33,7 +33,7 @@ app.get(routes.app, function(req, res) {
 
 	// Get options from request
 	var options = {
-		appID: req.url.replace(routes.app.split("*")[0], ""),
+		appID: req.params.appID,
 		lang: req.headers["accept-language"].split(",")[0].replace("-", "_")
 	};
 
