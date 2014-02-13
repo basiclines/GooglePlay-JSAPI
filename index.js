@@ -1,7 +1,7 @@
-// Local files
+// Google Play Store custom API
 var API = require('./api');
 
-// API RESPONSE
+// Routing
 var express = require("express");
 var logfmt = require("logfmt");
 var app = express();
@@ -16,6 +16,13 @@ var routes = {
 	search: '/search/*'
 }
 
+var apiHeaders = {
+	'Content-Type': 'application/json',
+	'Access-Control-Allow-Origin': '*',
+	'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+	'Access-Control-Allow-Headers': 'Content-Type'
+}
+
 // Routing Root
 app.get(routes.root, function(req, res) {
   res.send('Hello World!');
@@ -24,12 +31,7 @@ app.get(routes.root, function(req, res) {
 // Routing App
 app.get(routes.app, function(req, res) {
 
-	res.writeHead(200, {
-		'Content-Type': 'application/json',
-		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-		'Access-Control-Allow-Headers': 'Content-Type'
-	});
+	res.writeHead(200, apiHeaders);
 
 	// Get options from request
 	var options = {
@@ -40,8 +42,8 @@ app.get(routes.app, function(req, res) {
 	API.getApp(options, res);
 });
 
-// Start listening
+// Initialize
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
-  console.log("Listening on " + port);
+	console.log("Listening on " + port);
 });
