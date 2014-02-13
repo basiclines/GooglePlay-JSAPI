@@ -1,7 +1,7 @@
 // CURL
 var util = require('util');
 var exec = require('child_process').exec;
-// request.js
+
 module.exports = {
   getApp: function (config, response) {
 
@@ -20,8 +20,7 @@ module.exports = {
     var base_path = "https://play.google.com/store/apps/details?id="
     var command = 'curl  -H '+headerLanguage+' -H '+headerEncoding+' -sL '+base_path+config.appID;
 
-    // Use request instead of child_process
-    // http://nodejs.org/docs/v0.5.2/api/http.html#http.request
+    // Execute request
     child = exec(command, function(error, stdout, stderr){
 
          if(error !== null) {

@@ -5,7 +5,7 @@
     "url": "meetsapp.com"
   },
   "name": "GooglePlay-Store-API",
-  "description": "Obtaing GooglePlay Store applications metadata",
+  "description": "Get GooglePlay Store applications metadata",
   "keywords": [
     "GooglePlay",
     "android",
@@ -19,6 +19,7 @@
     "type": "git",
     "url": "http://github.com/meetsapp/GooglePlay-JSAPI.git"
   },
+  "license" : "MIT",
   "main": "./index.js",
   "engines": {
     "node": ">= 0.6"

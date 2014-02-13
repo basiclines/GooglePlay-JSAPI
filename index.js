@@ -45,8 +45,3 @@ var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
-
-
-// foreman start
-//  heroku ps:scale web=1
-// https://devcenter.heroku.com/articles/getting-started-with-nodejs#prerequisites
