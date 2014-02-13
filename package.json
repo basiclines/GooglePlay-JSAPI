@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "util": "0.x",
+    "express": "3.x",
+    "logfmt": "0.x",
     "cheerio": "0.x"
   }
 }
