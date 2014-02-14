@@ -26,7 +26,8 @@ var apiHeaders = {
 
 // Routing Root
 app.get(routes.root, function(req, res) {
-  res.send('Hello World!');
+	var warningString = "Usage: /app/:appid"+ " <br/>"+" Example: /app/com.meetsapp";
+	res.send(warningString);
 });
 
 // Routing App
