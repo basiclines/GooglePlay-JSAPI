@@ -41,7 +41,9 @@ app.get(routes.app, function(req, res) {
 		lang: req.headers["accept-language"].split(",")[0].replace("-", "_")
 	};
 
-	API.getApp(options, res);
+	API.getApp(options, function(json) {
+		res.end(json);
+	});
 });
 
 // Initialize

@@ -5,11 +5,13 @@ module.exports = {
 	/**
 	* Retrieves information with a given appID
 	*
-	* @return Object
-	* @propertie String lang
-	* @propertie String appID
+	* @param Object config
+		* @prop String lang
+		* @prop String appID
+	* @param Function callback
+		* @param Object data
 	*/
-	getApp: function (config, response) {
+	getApp: function (config, callback) {
 		config.lang = (typeof config.lang == "string") ? config.lang : "en_US";
 
 		var headerLanguage = "Accept-Language:"+config.lang;
@@ -22,7 +24,9 @@ module.exports = {
 			if (!error && res.statusCode == 200) {
 				var scraper = require('./scrapers/app');
 				var data = scraper.parse(chunk);
-				response.end(JSON.stringify(data));
+				if (typeof callback == 'function') {
+					callback(JSON.stringify(data));
+				}
 			}
 		});
 	}
