@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Googleplay-jsapi by meetsapp</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Googleplay-jsapi</h1>
+        <h2>Google Play Store API in NodeJS</h2>
+        <a href="https://github.com/meetsapp/GooglePlay-JSAPI" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="google-play-store-javascript-api" class="anchor" href="#google-play-store-javascript-api"><span class="octicon octicon-link"></span></a>Google Play Store Javascript API</h1>
+
+<p>Retrieves applications metadata from Google Play Store product detail page trought NodeJS</p>
+
+<h1>
+<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why?</h1>
+
+<p>When i was working on <a href="https://github.com/meetsapp/SmartAppBanner">https://github.com/meetsapp/SmartAppBanner</a>, i thought it will be cool to have support for Android Banners also
+ but i've found quite hard to get the desired metada from Google Play Store with <strong>non-official libraries based on Python or Java</strong>, as i don't know a bit about these languages.</p>
+
+<p>That's why i've created a small <strong>NodeJS server that exposes Google Play Store applications metadata in JSON</strong> format that also can be accessed for any client/server side script</p>
+
+<h1>
+<a name="how" class="anchor" href="#how"><span class="octicon octicon-link"></span></a>How?</h1>
+
+<p>Requests routed to <code>/app/:appid</code> crawls the Goole Play Store product detail page (given an appid) by DOM traversing with <code>cheerio</code>.
+Then we assemble a <strong>JSON output</strong> by using the same syntax format as the iTunes API <a href="http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html#searchexamples">http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html#searchexamples</a></p>
+
+<p>The server responds to any GET request (yes, also <strong>CORS with client-side Javascript</strong>)</p>
+
+<h1>
+<a name="live-example" class="anchor" href="#live-example"><span class="octicon octicon-link"></span></a>Live example</h1>
+
+<p><code>http://googleplay-jsapi.herokuapp.com/app/:appid</code></p>
+
+<p>Where <code>:appid</code> is your application package id, i.e:
+<a href="http://googleplay-jsapi.herokuapp.com/app/com.meetsapp">http://googleplay-jsapi.herokuapp.com/app/com.meetsapp</a></p>
+
+<h1>
+<a name="running-local" class="anchor" href="#running-local"><span class="octicon octicon-link"></span></a>Running local</h1>
+
+<p><code>npm install</code></p>
+
+<p><code>node index.js</code> or <code>foreman start</code></p>
+
+<h1>
+<a name="running-on-heroku-live-deploy" class="anchor" href="#running-on-heroku-live-deploy"><span class="octicon octicon-link"></span></a>Running on Heroku (Live deploy)</h1>
+
+<p><strong>1/</strong> Create project on <strong>Heroku</strong></p>
+
+<p><strong>2/</strong> Pick the <strong>Git URL</strong> of the project and add it as new Git remote</p>
+
+<p><code>git remote add heroku git@heroku.com:project-name.git</code></p>
+
+<p><strong>3/</strong> Push the code</p>
+
+<p><code>git push heroku master</code></p>
+
+<p><strong>4/</strong> Ensure the app is running (you may need to instal Heroku CLI)</p>
+
+<p><code>heroku ps:scale web=1</code></p>
+
+<p>More info
+<a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#prerequisites">https://devcenter.heroku.com/articles/getting-started-with-nodejs#prerequisites</a></p>
+
+<h1>
+<a name="similar-libraries" class="anchor" href="#similar-libraries"><span class="octicon octicon-link"></span></a>Similar libraries</h1>
+
+<p><strong>Python:</strong> <a href="https://github.com/androidtweak/Google-Play-REST-API/">https://github.com/androidtweak/Google-Play-REST-API/</a></p>
+
+<p><strong>Java:</strong> <a href="https://github.com/Akdeniz/google-play-crawler">https://github.com/Akdeniz/google-play-crawler</a></p>
+
+<h1>
+<a name="to-do" class="anchor" href="#to-do"><span class="octicon octicon-link"></span></a>To do</h1>
+
+<ul>
+<li>Add new scrappers for providing access to searches or other products types</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/meetsapp/GooglePlay-JSAPI/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/meetsapp/GooglePlay-JSAPI/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/meetsapp/GooglePlay-JSAPI"></a> is maintained by <a href="https://github.com/meetsapp">meetsapp</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
