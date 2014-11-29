@@ -13,7 +13,7 @@ app.use(logfmt.requestLogger());
 var routes = {
 	root: '/',
 	app: '/app/:appID',
-	search: '/search/*'
+	search: '/search/:queryStr'
 }
 
 // API response headers
@@ -27,6 +27,7 @@ var apiHeaders = {
 // Routing Root
 app.get(routes.root, function(req, res) {
 	var warningString = "Usage: /app/:appid"+ " <br/>"+" Example: /app/com.meetsapp";
+	warningString += "<br />Usage: /search/:appName"+ " <br/>"+" Example: /search/meetsapp";
 	res.send(warningString);
 });
 
@@ -44,6 +45,20 @@ app.get(routes.app, function(req, res) {
 	API.getApp(options, function(json) {
 		res.end(json);
 	});
+});
+
+app.get(routes.search, function(req, res) {
+	res.writeHead(200, apiHeaders);
+
+	// Get options from request
+	var options = {
+		queryStr: req.params.queryStr,
+		lang: req.headers["accept-language"].split(",")[0].replace("-", "_")
+	};
+
+	API.getSearch(options, function(json) {
+		res.end(json);
+	})
 });
 
 // Initialize
