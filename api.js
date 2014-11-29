@@ -1,4 +1,3 @@
-var util = require('util');
 var request = require('request');
 
 module.exports = {
@@ -6,19 +5,12 @@ module.exports = {
 	* Retrieves information with a given appID
 	*
 	* @param Object config
-		* @prop String lang
 		* @prop String appID
 	* @param Function callback
 		* @param Object data
 	*/
 	getApp: function (config, callback) {
-		config.lang = (typeof config.lang == "string") ? config.lang : "en_US";
-
-		var headerLanguage = "Accept-Language:"+config.lang;
-		var headerEncoding = "Content-Type: charset=utf-8";
-		var basePath = "https://play.google.com/store/apps/details?id="
-		var command = 'curl  -H '+headerLanguage+' -H '+headerEncoding+' -sL '+basePath+config.appID;
-
+		var basePath = "https://play.google.com/store/apps/details?id=";
 
 		request(basePath+config.appID, function (error, res, chunk) {
 			if (!error && res.statusCode == 200) {
@@ -29,5 +21,28 @@ module.exports = {
 				}
 			}
 		});
+	},
+	/**
+	* Retrieves search details for a given name
+	*
+	* @param Object config
+		* @prop String queryStr
+	 	* @prop String lang
+	* @param Function callback
+		* @param Object data
+	*/
+	getSearch: function (config, callback) {
+		var basePath = "https://play.google.com/store/search?&c=apps&q=" + config.queryStr + "&hl=" + config.lang;
+		console.log('Fetching url ' + basePath);
+		request(basePath, function (error, res, chunk) {
+			if (!error && res.statusCode == 200) {
+				var scraper = require('./scrapers/search');
+				var data = scraper.parse(chunk);
+				if (typeof callback == 'function') {
+					callback(JSON.stringify(data));
+				}
+			}
+		});
 	}
+
 };
