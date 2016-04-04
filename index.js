@@ -6,17 +6,8 @@ var express = require("express");
 var logfmt = require("logfmt");
 var app = express();
 
-// Set logger
-app.use(logfmt.requestLogger());
-
 // Routes definitions
-var routes = {
-	root: '/',
-	app: '/app/:appID',
-	search: '/search/:queryStr'
-}
 
-// API response headers
 var apiHeaders = {
 	'Content-Type': 'application/json',
 	'Access-Control-Allow-Origin': '*',
