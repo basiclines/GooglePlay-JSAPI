@@ -6,9 +6,6 @@ var express = require("express");
 var logfmt = require("logfmt");
 var app = express();
 
-// Set logger
-app.use(logfmt.requestLogger());
-
 // Routes definitions
 
 var apiHeaders = {
