@@ -19,6 +19,11 @@ module.exports = {
 				if (typeof callback == 'function') {
 					callback(JSON.stringify(data));
 				}
+			} else {
+				// call callback anyway
+				callback(JSON.stringify({
+					error: res.statusCode
+				}));
 			}
 		});
 	},
