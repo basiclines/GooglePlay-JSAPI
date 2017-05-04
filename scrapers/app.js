@@ -42,8 +42,8 @@ module.exports = {
 		}
 
 		// User rating from 0/5 and reviews amount
-		var r_averageUserRating = wrapper.find(".header-star-badge .current-rating").attr('style') ? parseInt(wrapper.find(".header-star-badge .current-rating").attr("style").match(/\d+/g)[0]*5/100, 10) : 0;
-		var r_userRatingCount = wrapper.find(".header-star-badge .stars-count").text().match(/\d+/g) ? wrapper.find(".header-star-badge .stars-count").text().match(/\d+/g)[0] : '0';
+		var r_averageUserRating = wrapper.find(".header-star-badge .current-rating").attr('style') ? parseFloat(wrapper.find(".header-star-badge .current-rating").attr("style").match(/\d+/g)[0]*5/100, 10) : 0;
+		var r_userRatingCount = wrapper.find(".header-star-badge .stars-count").text().match(/[\d,]+/g) ? wrapper.find(".header-star-badge .stars-count").text().match(/[\d,]+/g)[0] : '0';
         var r_viewUrl = "https://play.google.com/store/apps/details?id=";
 
 		// Iterate over all screenshoots
